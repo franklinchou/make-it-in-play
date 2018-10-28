@@ -11,3 +11,8 @@ jobs:
             cd generator-playsonapi
             npm test
           no_output_timeout: 5m
+workflows:
+  version: 2
+  run-scaffold-tests:
+    jobs:
+      - run-scaffold-tests
