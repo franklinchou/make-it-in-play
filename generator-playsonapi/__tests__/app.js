@@ -2,11 +2,12 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
+var global = require('./../generators/app/global');
 
 describe('generator-playsonapi:app', () => {
-  const defaultAppName = 'test'.beforeAll(() => {
+  beforeAll(() => {
     return helpers.run(path.join(__dirname, '../generators/app')).withPrompts({
-      name: defaultAppName,
+      name: 'test',
       organization: 'com.test',
       projectVersion: '0.0.1',
       sbtVersion: global.sbtVersion,
@@ -18,6 +19,6 @@ describe('generator-playsonapi:app', () => {
   });
 
   it('creates files', () => {
-    assert.file([`${defaultAppName}/build.sbt`]);
+    assert.file(['test/build.sbt']);
   });
 });

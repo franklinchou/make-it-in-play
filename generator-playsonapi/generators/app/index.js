@@ -2,14 +2,14 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const global = require('./global');
+var global = require('./global');
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(yosay(`Welcome to the ${chalk.red('generator-playsonapi')} generator!`));
 
-    this.log(`Scala version: ${global.scalaBaseVersion}`);
+    this.log(`Scala version: ${global.SCALA_BASE_VERSION}`);
 
     const prompts = [
       {
@@ -46,7 +46,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'scalaTestVersion',
         message: `org.scalatest => scalatest_2.12 version (scala ${
-          global.scalaBaseVersion
+          global.SCALA_BASE_VERSION
         })`,
         default: global.scalaTestVersion
       },
