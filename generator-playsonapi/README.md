@@ -16,6 +16,11 @@ Then generate your new project:
 yo playsonapi
 ```
 
+Note that generator-playsonapi will prompt you for information about version numbers
+for various sbt packages. This is for _setting_ those versions only. Actual package
+installation and setup will be done by sbt by issuing `sbt clean compile` from your
+project directory after yeoman has created your shiny new application.
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
