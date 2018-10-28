@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Test generator-playsonapi yeoman project 
           command: |
-            npm install -g "eslint-config-airbnb@latest"
+            npm install -g eslint
             cd generator-playsonapi
             npm test
           no_output_timeout: 5m
