@@ -21,6 +21,12 @@ for various sbt packages. This is for _setting_ those versions only. Actual pack
 installation and setup will be done by sbt by issuing `sbt clean compile` from your
 project directory after yeoman has created your shiny new application.
 
+
+## Tests
+
+From this directory issue: `npm test`
+
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
