@@ -1,4 +1,4 @@
-# generator-playsonapi [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-playsonapi
 > An opinionated framework for writing play web-services with jsonapi.
 
 ## Installation
@@ -20,6 +20,12 @@ Note that generator-playsonapi will prompt you for information about version num
 for various sbt packages. This is for _setting_ those versions only. Actual package
 installation and setup will be done by sbt by issuing `sbt clean compile` from your
 project directory after yeoman has created your shiny new application.
+
+
+## Tests
+
+From this directory issue: `npm test`
+
 
 ## Getting To Know Yeoman
 
