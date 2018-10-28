@@ -2,7 +2,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-// const Helper = require('yo-java-helper');
+// Const Helper = require('yo-java-helper');
 
 module.exports = class extends Generator {
   prompting() {
@@ -16,13 +16,13 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'name',
         message: 'Project name (name the root level package of this application)',
-        default: this.appname 
+        default: this.appname
       },
       {
         type: 'input',
         name: 'organization',
         message: 'Organization name',
-        default: `com.${this.user.github.username}`  // TODO Why you no work?
+        default: `com.${this.user.github.username}` // TODO Why you no work?
       },
       {
         type: 'input',
@@ -53,7 +53,7 @@ module.exports = class extends Generator {
   writing() {
     this.fs.copyTpl(
       this.templatePath('project-root/build.sbt'),
-      this.destinationPath(`${this.props.name}/build.sbt`), 
+      this.destinationPath(`${this.props.name}/build.sbt`),
       {
         appname: this.props.name,
         organization: this.props.organization,
@@ -61,9 +61,32 @@ module.exports = class extends Generator {
         scala: this.props.scalaVersion
       }
     );
+    this.fs.copyTpl(
+      this.templatePath('project-root/project/build.properties'),
+      this.destinationPath(`${this.props.name}/project/build.properties`),
+      {
+        sbtVersion: this.props.sbtVersion
+      }
+    );
+    this.fs.copy(
+      this.templatePath('project-root/app/controllers/*'),
+      this.destinationPath(`${this.props.name}/app/controllers`)
+    );
+    this.fs.copy(
+      this.templatePath('project-root/app/lib/*'),
+      this.destinationPath(`${this.props.name}/app/lib`)
+    );
+    this.fs.copy(
+      this.templatePath('project-root/app/models/*'),
+      this.destinationPath(`${this.props.name}/app/models`)
+    );
+    this.fs.copy(
+      this.templatePath('project-root/app/resources/*'),
+      this.destinationPath(`${this.props.name}/app/resources`)
+    );
   }
 
-  // install() {
+  // Install() {
   //   this.installDependencies();
   // }
 };

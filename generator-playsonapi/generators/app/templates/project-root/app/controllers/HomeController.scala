@@ -21,7 +21,7 @@ class HomeController @Inject()(config: Configuration,
         Json.obj(
           "application" -> config.get[String]("app.name"),
           "environment" -> config.get[String]("app.env"),
-          "debug-mode" -> config.get[String]("app.debug")
+          "debug-mode" -> config.get[Boolean]("app.debug")
         )
       Ok(json)
     }
