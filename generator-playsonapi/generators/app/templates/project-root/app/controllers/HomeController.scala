@@ -10,7 +10,6 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class HomeController @Inject()(config: Configuration,
-                               ws: WSClient,
                                cc: ControllerComponents)
                               (implicit ec: ExecutionContext) extends AbstractController(cc) {
 

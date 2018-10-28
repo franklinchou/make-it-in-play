@@ -7,7 +7,7 @@ var global = require('./global');
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(yosay(`Welcome to the ${chalk.red('generator-playsonapi')} generator!`));
+    this.log(yosay(`Welcome to the ${chalk.red('playsonapi')} generator!`));
 
     this.log(`Scala version: ${global.SCALA_BASE_VERSION}`);
 
@@ -16,7 +16,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'name',
         message: 'Project name (name the root level package of this application)',
-        default: this.appname
+        default: 'my-playsonapi-app'
       },
       {
         type: 'input',
