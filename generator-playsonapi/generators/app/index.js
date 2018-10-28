@@ -2,14 +2,14 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-// Const Helper = require('yo-java-helper');
+const global = require('./global');
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the tremendous ${chalk.red('generator-playsonapi')} generator!`)
-    );
+    this.log(yosay(`Welcome to the ${chalk.red('generator-playsonapi')} generator!`));
+
+    this.log(`Scala version: ${global.scalaBaseVersion}`);
 
     const prompts = [
       {
@@ -34,13 +34,33 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'sbtVersion',
         message: 'sbt version',
-        default: '1.1.6'
+        default: global.sbtVersion
       },
       {
         type: 'input',
-        name: 'scalaVersion',
-        message: 'scala version',
-        default: '2.12.17'
+        name: 'playJsonExtensionsVersion',
+        message: 'ai.x => play-json-extensions version',
+        default: global.playJsonExtensionsVersion
+      },
+      {
+        type: 'input',
+        name: 'scalaTestVersion',
+        message: `org.scalatest => scalatest_2.12 version (for scala ${
+          global.scalaBaseVersion
+        })`,
+        default: global.scalaTestVersion
+      },
+      {
+        type: 'input',
+        name: 'scalaTestPlusPlayVersion',
+        message: 'org.scalatestplus.play => scalatestplus-play version',
+        default: global.scalaTestPlusPlayVersion
+      },
+      {
+        type: 'input',
+        name: 'typesafeSbtPluginVersion',
+        message: 'com.typesafe.play => sbt-plugin version',
+        default: global.typesafeSbtPluginVersion
       }
     ];
 
@@ -58,7 +78,10 @@ module.exports = class extends Generator {
         appname: this.props.name,
         organization: this.props.organization,
         version: this.props.projectVersion,
-        scala: this.props.scalaVersion
+        scalaVersion: global.scalaVersion,
+        playJsonExtensionsVersion: this.props.playJsonExtensionsVersion,
+        scalaTestVersion: this.props.scalaTestVersion,
+        scalaTestPlusPlayVersion: this.props.scalaTestPlusPlayVersion
       }
     );
     this.fs.copyTpl(
@@ -66,6 +89,13 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.props.name}/project/build.properties`),
       {
         sbtVersion: this.props.sbtVersion
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('project-root/project/plugins.sbt'),
+      this.destinationPath(`${this.props.name}/project/plugins.sbt`),
+      {
+        typesafeSbtPluginVersion: this.props.typesafeSbtPluginVersion
       }
     );
     this.fs.copy(
