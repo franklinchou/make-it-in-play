@@ -34,13 +34,13 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'sbtVersion',
         message: 'sbt version',
-        default: global.sbtVersion
+        default: global.SBT_VERSION
       },
       {
         type: 'input',
         name: 'playJsonExtensionsVersion',
         message: 'ai.x => play-json-extensions version',
-        default: global.playJsonExtensionsVersion
+        default: global.PLAY_JSON_EXTENSIONS_VERSION
       },
       {
         type: 'input',
@@ -48,19 +48,19 @@ module.exports = class extends Generator {
         message: `org.scalatest => scalatest_2.12 version (scala ${
           global.SCALA_BASE_VERSION
         })`,
-        default: global.scalaTestVersion
+        default: global.SCALA_TEST_VERSION
       },
       {
         type: 'input',
         name: 'scalaTestPlusPlayVersion',
         message: 'org.scalatestplus.play => scalatestplus-play version',
-        default: global.scalaTestPlusPlayVersion
+        default: global.SCALA_TEST_PLUS_PLAY_VERSION
       },
       {
         type: 'input',
         name: 'typesafeSbtPluginVersion',
         message: 'com.typesafe.play => sbt-plugin version',
-        default: global.typesafeSbtPluginVersion
+        default: global.TYPESAFE_SBT_VERSION
       }
     ];
 
@@ -78,7 +78,7 @@ module.exports = class extends Generator {
         appname: this.props.name,
         organization: this.props.organization,
         version: this.props.projectVersion,
-        scalaVersion: global.scalaVersion,
+        scalaVersion: global.SCALA_VERSION,
         playJsonExtensionsVersion: this.props.playJsonExtensionsVersion,
         scalaTestVersion: this.props.scalaTestVersion,
         scalaTestPlusPlayVersion: this.props.scalaTestPlusPlayVersion

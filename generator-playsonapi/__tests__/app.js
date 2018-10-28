@@ -10,11 +10,11 @@ describe('generator-playsonapi:app', () => {
       name: 'test',
       organization: 'com.test',
       projectVersion: '0.0.1',
-      sbtVersion: global.sbtVersion,
-      playJsonExtensionsVersion: global.playJsonExtensionsVersion,
-      scalaTestVersion: global.scalaTestVersion,
-      scalaTestPlusPlayVersion: global.scalaTestPlusPlayVersion,
-      typesafeSbtPluginVersion: global.typesafeSbtPluginVersion
+      sbtVersion: global.SBT_VERSION,
+      playJsonExtensionsVersion: global.PLAY_JSON_EXTENSIONS_VERSION,
+      scalaTestVersion: global.SCALA_TEST_VERSION,
+      scalaTestPlusPlayVersion: global.SCALA_TEST_PLUS_PLAY_VERSION,
+      typesafeSbtPluginVersion: global.TYPESAFE_SBT_VERSION
     });
   });
 
