@@ -1,19 +1,29 @@
 package lib.jsonapi
+
 import play.api.libs.json.{JsObject, Json}
 
-case class DataResources(id: String, `type`: String, drs: Seq[DataResource]) extends DataIdResource {
+trait DataResource extends DataIdResource {
 
-  val meta: Option[JsObject] =
-    Some(
-      Json.obj(
-        "count" -> drs.size
-      )
+  val `type`: String
+
+  val id: String
+
+  val attributes: Option[JsObject]
+
+  val relationships: Option[JsObject]
+
+  val errors: Option[JsObject]
+
+  protected lazy val affiliates: Map[String, Option[JsObject]] =
+    Map(
+      "attributes" -> attributes,
+      "relationships" -> relationships,
+      "errors" -> errors,
+      "meta" -> meta
     )
 
-  override val toJsonApi: JsObject =
-    Json.obj(
-      topLevelTag ->
-        drs.map(dr => dr.toJsonApi)
-    )
+  protected val base = Json.obj("type" -> `type`, "id" -> id)
+
+  override val toJsonApi: JsObject = reduce(affiliates, base)
 
 }

@@ -12,7 +12,7 @@ val playJsonExtensionsVersion = "<%= playJsonExtensionsVersion %>"
 
 val scalaTestVersion = "<%= scalaTestVersion %>"
 
-val scalaTestPlusPlayVersion = "<%= scalaTestPlusPlayVersion %>"
+val scalaTestPlayVersion = "<%= scalaTestPlusPlayVersion %>"
 
 resolvers ++= Seq(
   "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
@@ -20,7 +20,7 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   guice,
-  "ai.x" %% "play-json-extensions" % playJsonExtensions,
+  "ai.x" %% "play-json-extensions" % playJsonExtensionsVersion,
   "org.scalatest" % "scalatest_2.12" % scalaTestVersion % Test,
   "org.scalatestplus.play" %% "scalatestplus-play" % scalaTestPlayVersion % Test
 )
