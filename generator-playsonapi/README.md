@@ -1,4 +1,4 @@
-# generator-playsonapi [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-playsonapi
 > An opinionated framework for writing play web-services with jsonapi.
 
 ## Installation
