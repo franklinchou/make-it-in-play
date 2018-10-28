@@ -8,8 +8,8 @@ jobs:
       - run:
           name: Test generator-playsonapi yeoman project 
           command: |
-            npm install -g eslint
             cd generator-playsonapi
+            npm build .
             npm test
           no_output_timeout: 5m
 workflows:
