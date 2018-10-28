@@ -45,7 +45,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'scalaTestVersion',
-        message: `org.scalatest => scalatest_2.12 version (for scala ${
+        message: `org.scalatest => scalatest_2.12 version (scala ${
           global.scalaBaseVersion
         })`,
         default: global.scalaTestVersion
@@ -99,21 +99,21 @@ module.exports = class extends Generator {
       }
     );
     this.fs.copy(
-      this.templatePath('project-root/app/controllers/*'),
+      this.templatePath('project-root/app/controllers'),
       this.destinationPath(`${this.props.name}/app/controllers`)
     );
     this.fs.copy(
-      this.templatePath('project-root/app/lib/*'),
+      this.templatePath('project-root/app/lib'),
       this.destinationPath(`${this.props.name}/app/lib`)
     );
-    this.fs.copy(
-      this.templatePath('project-root/app/models/*'),
-      this.destinationPath(`${this.props.name}/app/models`)
-    );
-    this.fs.copy(
-      this.templatePath('project-root/app/resources/*'),
-      this.destinationPath(`${this.props.name}/app/resources`)
-    );
+    // This.fs.copy(
+    //   this.templatePath('project-root/app/models'),
+    //   this.destinationPath(`${this.props.name}/app/models`)
+    // );
+    // this.fs.copy(
+    //   this.templatePath('project-root/app/resources'),
+    //   this.destinationPath(`${this.props.name}/app/resources`)
+    // );
   }
 
   // Install() {
