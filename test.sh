@@ -11,6 +11,7 @@ function main() {
     echo Running automated integration test...
     cd generator-playsonapi
     npm link
+    npm install -g yo
     cd $PROJECT_ROOT
     mkdir -p $TEST_PROJECT_NAME
     cd $TEST_PROJECT_NAME
