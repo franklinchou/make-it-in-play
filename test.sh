@@ -11,11 +11,12 @@ function main() {
     echo Running automated integration test...
     cd generator-playsonapi
     npm link
-    # npm install -g yo
+    npm install -g yo
     cd $PROJECT_ROOT
     mkdir -p $TEST_PROJECT_NAME
     cd $TEST_PROJECT_NAME
-    /root/project/generator-playsonapi/node_modules/yo playsonapi --headless
+    whereis yo
+    /root/project/generator-playsonapi/node_modules/yo/bin/yo playsonapi --headless
     echo Test scaffolding complete. Running sbt tests...
     cd $TEST_PROJECT_NAME
     sbt clean compile
