@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  run-scaffold-tests:
+  run-tests:
     docker:
       - image: node:8.11.3
     steps:
@@ -11,22 +11,11 @@ jobs:
             cd generator-playsonapi
             npm install .
             npm test
-          no_output_timeout: 5m
-  run-integration-tests:
-    docker:
-      - image: node:8.11.3
-      - image: hseeberger/scala-sbt:8u181_2.12.7_1.2.6
-    steps:
-      - checkout
-      - run:
-          name: Test sbt project
-          command: |
-            cd generator-playsonapi
-            npm install .
+            cd ..
             ./test.sh
+          no_output_timeout: 5m
 workflows:
   version: 2
   run-playsonapi-tests:
     jobs:
-      #- run-scaffold-tests
-      - run-integration-tests
+      - run-tests
