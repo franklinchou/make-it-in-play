@@ -16,6 +16,7 @@ function main() {
     cd $PROJECT_ROOT
     mkdir -p $TEST_PROJECT_NAME
     cd $TEST_PROJECT_NAME
+    cat /root/.config/insight-nodejs/insight-yo.json
     yo playsonapi --headless
     echo Test scaffolding complete. Running sbt tests...
     cd $TEST_PROJECT_NAME
