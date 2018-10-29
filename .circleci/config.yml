@@ -12,6 +12,13 @@ jobs:
             npm install .
             npm test
           no_output_timeout: 5m
+  run-integration-tests:
+    steps:
+      - checkout
+      - run:
+          name: Test sbt project
+          command: |
+            ./test.sh
 workflows:
   version: 2
   run-scaffold-tests:

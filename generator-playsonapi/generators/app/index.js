@@ -5,18 +5,21 @@ const yosay = require('yosay');
 var global = require('./global');
 
 module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+    this.option('headless');
+    if (this.options.headless) {
+      this.headless = true;
+    }
+  }
+
   prompting() {
-    // Have Yeoman greet the user.
-    this.log(yosay(`Welcome to the ${chalk.red('playsonapi')} generator!`));
-
-    this.log(`Scala version: ${global.SCALA_BASE_VERSION}`);
-
     const prompts = [
       {
         type: 'input',
         name: 'name',
         message: 'Project name (name the root level package of this application)',
-        default: 'my-playsonapi-app'
+        default: this.appname
       },
       {
         type: 'input',
@@ -58,16 +61,34 @@ module.exports = class extends Generator {
       },
       {
         type: 'input',
-        name: 'typesafeSbtPluginVersion',
+        name: 'typesafeSbtVersion',
         message: 'com.typesafe.play => sbt-plugin version',
         default: global.TYPESAFE_SBT_VERSION
       }
     ];
 
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    });
+    if (!this.options.headless) {
+      // Have Yeoman greet the user.
+      this.log(yosay(`Welcome to the ${chalk.red('playsonapi')} generator!`));
+      this.log(`Scala version: ${global.SCALA_BASE_VERSION}`);
+      return this.prompt(prompts).then(props => {
+        // To access props later use this.props.someAnswer;
+        this.props = props;
+      });
+    }
+
+    this.log('Headless detected. Running yeoman with defaults...');
+    var props = {
+      name: this.appname,
+      organization: 'com.test',
+      projectVersion: '0.0.1',
+      sbtVersion: global.SBT_VERSION,
+      playJsonExtensionsVersion: global.PLAY_JSON_EXTENSIONS_VERSION,
+      scalaTestVersion: global.SCALA_TEST_VERSION,
+      scalaTestPlusPlayVersion: global.SCALA_TEST_PLUS_PLAY_VERSION,
+      typesafeSbtVersion: global.TYPESAFE_SBT_VERSION
+    };
+    this.props = props;
   }
 
   writing() {
@@ -95,7 +116,7 @@ module.exports = class extends Generator {
       this.templatePath('project-root/project/plugins.sbt'),
       this.destinationPath(`${this.props.name}/project/plugins.sbt`),
       {
-        typesafeSbtPluginVersion: this.props.typesafeSbtPluginVersion
+        typesafeSbtVersion: this.props.typesafeSbtVersion
       }
     );
     this.fs.copy(
