@@ -21,6 +21,8 @@ jobs:
       - run:
           name: Test sbt project
           command: |
+            cd generator-playsonapi
+            npm install .
             ./test.sh
 workflows:
   version: 2
