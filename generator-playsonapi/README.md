@@ -7,7 +7,17 @@ First, install [Yeoman](http://yeoman.io) and generator-playsonapi using [npm](h
 
 ```bash
 npm install -g yo
+```
+
+To install generator-playsonapi global
+```bash
 npm install -g generator-playsonapi
+```
+
+If you can't or don't want a global install then install the generator only for the current user
+```bash
+cd make-it-in-play/generator-playsonapi
+yarn link
 ```
 
 Then generate your new project:
