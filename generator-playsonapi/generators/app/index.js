@@ -85,7 +85,6 @@ module.exports = class extends Generator {
       sbtVersion: global.SBT_VERSION,
       playJsonExtensionsVersion: global.PLAY_JSON_EXTENSIONS_VERSION,
       scalaTestVersion: global.SCALA_TEST_VERSION,
-      scalaTestPlusPlayVersion: global.SCALA_TEST_PLUS_PLAY_VERSION,
       typesafeSbtVersion: global.TYPESAFE_SBT_VERSION
     };
     this.props = props;
@@ -101,8 +100,7 @@ module.exports = class extends Generator {
         version: this.props.projectVersion,
         scalaVersion: global.SCALA_VERSION,
         playJsonExtensionsVersion: this.props.playJsonExtensionsVersion,
-        scalaTestVersion: this.props.scalaTestVersion,
-        scalaTestPlusPlayVersion: this.props.scalaTestPlusPlayVersion
+        scalaTestVersion: this.props.scalaTestVersion
       }
     );
     this.fs.copyTpl(
@@ -127,17 +125,9 @@ module.exports = class extends Generator {
       this.templatePath('project-root/app/lib'),
       this.destinationPath(`${this.props.name}/app/lib`)
     );
-    // This.fs.copy(
-    //   this.templatePath('project-root/app/models'),
-    //   this.destinationPath(`${this.props.name}/app/models`)
-    // );
-    // this.fs.copy(
-    //   this.templatePath('project-root/app/resources'),
-    //   this.destinationPath(`${this.props.name}/app/resources`)
-    // );
+    this.fs.copy(
+      this.templatePath('project-root/test'),
+      this.destinationPath(`${this.props.name}/test`)
+    );
   }
-
-  // Install() {
-  //   this.installDependencies();
-  // }
 };

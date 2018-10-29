@@ -2,6 +2,7 @@
 *.log
 
 test/*
+test-working/*
 
 node_modules
 coverage

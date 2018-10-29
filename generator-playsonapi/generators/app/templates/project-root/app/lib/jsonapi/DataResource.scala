@@ -12,7 +12,7 @@ trait DataResource extends DataIdResource {
 
   val relationships: Option[JsObject]
 
-  val errors: Option[JsObject]
+  val errors: Option[JsObject] = None
 
   protected lazy val affiliates: Map[String, Option[JsObject]] =
     Map(
@@ -22,8 +22,15 @@ trait DataResource extends DataIdResource {
       "meta" -> meta
     )
 
-  protected val base = Json.obj("type" -> `type`, "id" -> id)
+  protected val base: JsObject = Json.obj("type" -> `type`, "id" -> id)
 
-  override val toJsonApi: JsObject = reduce(affiliates, base)
+  override val toJsonApi: JsObject = 
+    Json.obj("data" -> reduce(affiliates, base))
+
+  lazy val toDataIdResource: JsObject =
+    Json.obj(
+      "type" -> `type`,
+      "id" -> id
+    )
 
 }
