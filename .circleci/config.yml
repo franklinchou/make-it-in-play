@@ -11,8 +11,8 @@ jobs:
             cd generator-playsonapi
             npm install .
             npm test
-            cd ..
-            ./test.sh
+            #  cd ..
+            # ./test.sh
           no_output_timeout: 5m
 workflows:
   version: 2
