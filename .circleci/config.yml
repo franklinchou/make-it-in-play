@@ -12,8 +12,7 @@ jobs:
             npm install .
             npm test
             cd ..
-            whereis yo
-            ./test.sh
+            ./test.sh -d
           no_output_timeout: 5m
 workflows:
   version: 2
