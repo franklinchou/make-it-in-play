@@ -8,6 +8,7 @@ set -o pipefail         # Use last non-zero exit code in a pipeline
 trap cleanup $?         # Trap clean up on any exit code
 
 function main() {
+    echo $(whoami)
     echo Running automated integration test...
     cd generator-playsonapi
     npm link

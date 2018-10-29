@@ -24,7 +24,7 @@ jobs:
             ./test.sh
 workflows:
   version: 2
-  run-scaffold-tests:
+  run-playsonapi-tests:
     jobs:
-      - run-scaffold-tests
+      #- run-scaffold-tests
       - run-integration-tests
