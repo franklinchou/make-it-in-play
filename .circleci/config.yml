@@ -27,4 +27,4 @@ workflows:
   run-scaffold-tests:
     jobs:
       - run-scaffold-tests
-      - run-integration-testss
+      - run-integration-tests
