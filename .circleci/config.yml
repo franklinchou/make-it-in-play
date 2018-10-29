@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  run-scaffold-tests:
+  run-tests:
     docker:
       - image: node:8.11.3
     steps:
@@ -14,6 +14,6 @@ jobs:
           no_output_timeout: 5m
 workflows:
   version: 2
-  run-scaffold-tests:
+  run-playsonapi-tests:
     jobs:
-      - run-scaffold-tests
+      - run-tests
